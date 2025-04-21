@@ -1,0 +1,79 @@
+<!-- Chat Interface -->
+<div class="chatbot-container">
+    <div class="chatbot-toggle" id="chatToggle">
+        <i class="fas fa-comments"></i>
+    </div>
+    <div class="chatbot-box" id="chatBox">
+        <div class="chatbot-header">
+            <h3>Chat Assistant</h3>
+            <button class="close-chat" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ask me anything...">
+            <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Chat Scripts -->
+<script src="js/chatbot.js"></script>
+<script>
+    // Initialize chat when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbot = new Chatbot();
+        const chatToggle = document.getElementById('chatToggle');
+        const chatBox = document.getElementById('chatBox');
+        const closeChat = document.getElementById('closeChat');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Toggle chat visibility
+        chatToggle.addEventListener('click', () => {
+            chatBox.classList.add('active');
+            if (chatMessages.children.length === 0) {
+                addMessage('Hi! How can I help you today?', 'bot');
+            }
+        });
+
+        // Close chat
+        closeChat.addEventListener('click', () => {
+            chatBox.classList.remove('active');
+        });
+
+        // Add message to chat
+        function addMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${type}-message`);
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Handle user message
+        function handleUserMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                const response = chatbot.processMessage(message);
+                setTimeout(() => addMessage(response, 'bot'), 500);
+                userInput.value = '';
+            }
+        }
+
+        // Send message events
+        sendMessage.addEventListener('click', handleUserMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+    });
+</script> 

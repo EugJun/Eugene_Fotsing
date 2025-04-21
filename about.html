@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Eugene Fotsing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">Eugene Fotsing</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="about-section">
+        <div class="about-container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="about-content">
+                <!-- Who I Am Section -->
+                <div class="who-i-am" data-aos="fade-up">
+                    <h3>Who I Am</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <p>
+                                I am a passionate Data Scientist and Scrum Master with a strong foundation in both technical and leadership roles. 
+                                Currently pursuing my Bachelor's in Computer Technology with a focus on Database Administration and Data Science, 
+                                I combine analytical thinking with agile methodologies to drive project success. My experience spans from handling 
+                                complex data analysis to leading agile teams, and I'm constantly seeking new challenges to grow both personally 
+                                and professionally.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education" data-aos="fade-right">
+                    <h3>Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Bachelor's in Computer Technology</h4>
+                            <p>Bowie State University</p>
+                            <p>Concentration: Database Administration and Data Science</p>
+                            <span class="date">2023 - 2025</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Associate of Applied Science in Information Technology</h4>
+                            <p>Prince George's Community College</p>
+                            <span class="date">2020 - 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience" data-aos="fade-left">
+                    <h3>Experience</h3>
+                    <div class="timeline">
+                        <!-- Experience 1: Agile Pinnacle -->
+                        <div class="timeline-item">
+                            <h4>Junior Scrum Master</h4>
+                            <p>Agile Pinnacle</p>
+                            <span class="date">May 2022 - August 2022</span>
+                            <ul>
+                                <li>Resolved 50+ Jira support tickets while collaborating with developers and product owners, improving team response time by 30% and reducing incident backlog</li>
+                                <li>Utilized Jira to track project progress, enhance team collaboration, and prioritize tasks, resulting in a 30% increase in team productivity</li>
+                                <li>Collaborated with engineering teams to troubleshoot critical issues, ensuring minimal downtime and improved service reliability.</li>
+                            </ul>
+                        </div>
+                        <!-- Experience 2: Elios Consulting -->
+                        <div class="timeline-item">
+                            <h4>Software Engineer Intern</h4>
+                            <p>Elios Consulting</p>
+                            <span class="date">May 2021 - August 2021</span>
+                            <ul>
+                                <li>Provided application maintenance support, including debugging and troubleshooting, to ensure software compliance and reduce vulnerabilities by 50%.</li>
+                                <li>Utilized REST APIs and conducted comprehensive testing with Postman to optimize system integration and improve application performance.</li>
+                                <li>Participated in sprint planning, stand-ups, and retrospectives using Scrum methodology, contributing to smoother delivery and improved backlog prioritization.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-box" id="chatBox">
+            <div class="chatbot-header">
+                <h3>Chat Assistant</h3>
+                <button class="close-chat" id="closeChat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Ask me anything...">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Initialize chat when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbot = new Chatbot();
+        const chatToggle = document.getElementById('chatToggle');
+        const chatBox = document.getElementById('chatBox');
+        const closeChat = document.getElementById('closeChat');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Toggle chat visibility
+        chatToggle.addEventListener('click', () => {
+            chatBox.classList.add('active');
+            if (chatMessages.children.length === 0) {
+                addMessage('Hi! How can I help you today?', 'bot');
+            }
+        });
+
+        // Close chat
+        closeChat.addEventListener('click', () => {
+            chatBox.classList.remove('active');
+        });
+
+        // Add message to chat
+        function addMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${type}-message`);
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Handle user message
+        function handleUserMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                const response = chatbot.processMessage(message);
+                setTimeout(() => addMessage(response, 'bot'), 500);
+                userInput.value = '';
+            }
+        }
+
+        // Send message events
+        sendMessage.addEventListener('click', handleUserMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+    });
+</script>
+</body>
+</html> 

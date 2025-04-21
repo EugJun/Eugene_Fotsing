@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Eugene Fotsing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="Home.html">Eugene Fotsing</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="skills" class="skills">
+        <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+        <div class="skills-container" data-aos="fade-up">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h4>Database Management</h4>
+                    <p>SQL, PL/SQL, Oracle, MySQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Data Science</h4>
+                    <p>Python (pandas, scikit-learn), Excel, Tableau, Anaconda</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>Data Science Techniques</h4>
+                    <p>Linear Regression, Data Cleaning, Feature Engineering, Data Visualization</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-users-gear"></i>
+                    <h4>Agile Management</h4>
+                    <p>Scrum, Kanban, SAFe, JIRA</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Soft Skills</h4>
+                    <p>Analytical Thinking, Communication, Team Collaboration</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add this section after the first skills-container div and before the Certifications section -->
+        <h2 class="section-title" data-aos="fade-up">Programming Languages</h2>
+        <div class="skills-container" data-aos="fade-up">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-java"></i>
+                    <h4>Java</h4>
+                    <p>Object-Oriented Programming, Data Structures, Algorithm Implementation</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h4>Python</h4>
+                    <p>Data Analysis, Machine Learning, Scientific Computing</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h4>HTML/CSS</h4>
+                    <p>Web Development, Responsive Design, Modern CSS Frameworks</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Visual Basic</h4>
+                    <p>Desktop Applications, Form Development, Database Integration</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Replace the existing certifications-container div with this -->
+        <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+        <div class="skills-container" data-aos="fade-up">
+            <div class="skills-grid">
+                <!-- PSM I Certification -->
+                <div class="skill-card">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Professional Scrum Master™ I (PSM I)</h4>
+                    <p>Issued by Scrum.org</p>
+                    <a href="https://www.credly.com/badges/d3316f2a-314c-4bcb-bd1f-65c751862f9f/public_url" target="_blank" class="view-badge-btn">
+                        <i class="fas fa-award"></i> View Badge
+                    </a>
+                </div>
+
+                <!-- PSM II Certification -->
+                <div class="skill-card">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Professional Scrum Master™ II (PSM II)</h4>
+                    <p>Issued by Scrum.org</p>
+                    <a href="https://www.credly.com/badges/7ef21f77-7ee1-42df-9b5c-57b3e4da92b8/public_url" target="_blank" class="view-badge-btn">
+                        <i class="fas fa-award"></i> View Badge
+                    </a>
+                </div>
+
+                <!-- Professional Kanban I Certification -->
+                <div class="skill-card">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Professional Kanban I</h4>
+                    <p>Issued by ProKanban.org</p>
+                    <a href="https://www.credly.com/badges/6e667b1a-0865-4928-8d6b-cf7a235db62f/public_url" target="_blank" class="view-badge-btn">
+                        <i class="fas fa-award"></i> View Badge
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-box" id="chatBox">
+            <div class="chatbot-header">
+                <h3>Chat Assistant</h3>
+                <button class="close-chat" id="closeChat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Ask me anything...">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Initialize chat when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbot = new Chatbot();
+        const chatToggle = document.getElementById('chatToggle');
+        const chatBox = document.getElementById('chatBox');
+        const closeChat = document.getElementById('closeChat');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Toggle chat visibility
+        chatToggle.addEventListener('click', () => {
+            chatBox.classList.add('active');
+            if (chatMessages.children.length === 0) {
+                addMessage('Hi! How can I help you today?', 'bot');
+            }
+        });
+
+        // Close chat
+        closeChat.addEventListener('click', () => {
+            chatBox.classList.remove('active');
+        });
+
+        // Add message to chat
+        function addMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${type}-message`);
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Handle user message
+        function handleUserMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                const response = chatbot.processMessage(message);
+                setTimeout(() => addMessage(response, 'bot'), 500);
+                userInput.value = '';
+            }
+        }
+
+        // Send message events
+        sendMessage.addEventListener('click', handleUserMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+    });
+</script>
+</body>
+</html> 

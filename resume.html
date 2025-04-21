@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Eugene Fotsing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+</head>
+<body class="resume-page" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Background.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; min-height: 100vh;">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="Home.html">Eugene Fotsing</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="resume" class="resume">
+        <h2 class="section-title" data-aos="fade-up" style="color: #ffffff;">Resume</h2>
+        
+        <!-- Role Selection Tabs -->
+        <div class="role-tabs" data-aos="fade-up">
+            <button class="tab-btn active" data-role="data-scientist" style="background-color: #007bff; color: #ffffff;">
+                <i class="fas fa-chart-network"></i>
+                Data Scientist
+            </button>
+            <button class="tab-btn" data-role="scrum-master" style="background-color: #000000; color: #ffffff;">
+                <i class="fas fa-users-gear"></i>
+                Scrum Master
+            </button>
+        </div>
+
+        <div class="resume-container">
+            <!-- Data Scientist Resume -->
+            <div class="resume-content active" id="data-scientist-resume" data-aos="fade-up">
+                <div class="resume-preview">
+                    <canvas id="dataScienceCanvas" class="pdf-canvas"></canvas>
+                    <div class="pdf-controls">
+                        <button class="btn secondary" onclick="changePage(-1)">Previous</button>
+                        <span id="dataSciencePageNum"></span>
+                        <button class="btn secondary" onclick="changePage(1)">Next</button>
+                    </div>
+                </div>
+                <div class="resume-actions">
+                    <a href="Resume/Eugene_Fotsing_Data_Scientist_Resume.pdf.pdf" download class="btn primary">
+                        <i class="fas fa-download"></i> Download Data Scientist Resume
+                    </a>
+                    <a href="Resume/Eugene_Fotsing_Data_Scientist_Resume.pdf.pdf" target="_blank" class="btn secondary">
+                        <i class="fas fa-eye"></i> View Full Screen
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scrum Master Resume -->
+            <div class="resume-content" id="scrum-master-resume" data-aos="fade-up">
+                <div class="resume-preview">
+                    <canvas id="scrumMasterCanvas" class="pdf-canvas"></canvas>
+                    <div class="pdf-controls">
+                        <button class="btn secondary" onclick="changePage(-1)">Previous</button>
+                        <span id="scrumMasterPageNum"></span>
+                        <button class="btn secondary" onclick="changePage(1)">Next</button>
+                    </div>
+                </div>
+                <div class="resume-actions">
+                    <a href="Resume/Eugene_Fotsing_Scrum_Master_Resume.pdf.pdf" download class="btn primary">
+                        <i class="fas fa-download"></i> Download Scrum Master Resume
+                    </a>
+                    <a href="Resume/Eugene_Fotsing_Scrum_Master_Resume.pdf.pdf" target="_blank" class="btn secondary">
+                        <i class="fas fa-eye"></i> View Full Screen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-box" id="chatBox">
+            <div class="chatbot-header">
+                <h3>Chat Assistant</h3>
+                <button class="close-chat" id="closeChat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Ask me anything...">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Initialize chat when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbot = new Chatbot();
+        const chatToggle = document.getElementById('chatToggle');
+        const chatBox = document.getElementById('chatBox');
+        const closeChat = document.getElementById('closeChat');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Toggle chat visibility
+        chatToggle.addEventListener('click', () => {
+            chatBox.classList.add('active');
+            if (chatMessages.children.length === 0) {
+                addMessage('Hi! How can I help you today?', 'bot');
+            }
+        });
+
+        // Close chat
+        closeChat.addEventListener('click', () => {
+            chatBox.classList.remove('active');
+        });
+
+        // Add message to chat
+        function addMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${type}-message`);
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Handle user message
+        function handleUserMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                const response = chatbot.processMessage(message);
+                setTimeout(() => addMessage(response, 'bot'), 500);
+                userInput.value = '';
+            }
+        }
+
+        // Send message events
+        sendMessage.addEventListener('click', handleUserMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+    });
+</script>
+    <script>
+        // Resume Tab Switching Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const resumeContents = document.querySelectorAll('.resume-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    resumeContents.forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding content
+                    btn.classList.add('active');
+                    const role = btn.getAttribute('data-role');
+                    document.getElementById(`${role}-resume`).classList.add('active');
+                });
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const iframes = document.querySelectorAll('iframe');
+        
+        iframes.forEach(iframe => {
+            iframe.onerror = function() {
+                this.style.display = 'none';
+                this.parentElement.innerHTML = `
+                    <div style="padding: 20px; text-align: center; background: #f8f8f8;">
+                        <p>Unable to load PDF. Please ensure the file exists in the resume folder.</p>
+                        <p>Expected path: ${this.src}</p>
+                    </div>
+                `;
+            };
+        });
+    });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to check if PDF exists
+        function checkPDFExists(url, frameId, fallbackId) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('PDF not found');
+                    }
+                })
+                .catch(error => {
+                    const frame = document.getElementById(frameId);
+                    const fallback = document.getElementById(fallbackId);
+                    if (frame && fallback) {
+                        frame.style.display = 'none';
+                        fallback.style.display = 'block';
+                    }
+                    console.error(`Error loading PDF at ${url}:`, error);
+                });
+        }
+
+        // Check both PDFs
+        checkPDFExists('Resume/Eugene_Fotsing_Data_Scientist_Resume.pdf', 'dataScienceFrame', 'dataScienceFallback');
+        checkPDFExists('Resume/Eugene_Fotsing_Scrum_Master_Resume.pdf', 'scrumMasterFrame', 'scrumMasterFallback');
+    });
+    </script>
+    <script>
+    let currentPDF = null;
+    let currentPage = 1;
+    let currentCanvas = 'dataScienceCanvas';
+
+    async function renderPDF(url, canvasId, pageNumId) {
+        try {
+            const loadingTask = pdfjsLib.getDocument(url);
+            const pdf = await loadingTask.promise;
+            currentPDF = pdf;
+            currentPage = 1;
+            currentCanvas = canvasId;
+            
+            // Initial render
+            renderPage(currentPage, canvasId, pageNumId);
+            
+            // Update page counter
+            document.getElementById(pageNumId).textContent = `Page ${currentPage} of ${pdf.numPages}`;
+        } catch (error) {
+            console.error('Error loading PDF:', error);
+            document.getElementById(canvasId).parentElement.innerHTML = `
+                <div class="error-message">
+                    <p>Unable to load PDF. Please use the download or view buttons below.</p>
+                </div>
+            `;
+        }
+    }
+
+    async function renderPage(pageNumber, canvasId, pageNumId) {
+        const canvas = document.getElementById(canvasId);
+        const page = await currentPDF.getPage(pageNumber);
+        
+        const viewport = page.getViewport({ scale: 1.5 });
+        const context = canvas.getContext('2d');
+        
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        
+        await page.render({
+            canvasContext: context,
+            viewport: viewport
+        }).promise;
+        
+        document.getElementById(pageNumId).textContent = `Page ${pageNumber} of ${currentPDF.numPages}`;
+    }
+
+    function changePage(offset) {
+        const newPage = currentPage + offset;
+        if (newPage >= 1 && newPage <= currentPDF.numPages) {
+            currentPage = newPage;
+            renderPage(currentPage, currentCanvas, 
+                currentCanvas === 'dataScienceCanvas' ? 'dataSciencePageNum' : 'scrumMasterPageNum');
+        }
+    }
+
+    // Initialize PDFs when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        renderPDF('Resume/Eugene_Fotsing_Data_Scientist_Resume.pdf.pdf', 'dataScienceCanvas', 'dataSciencePageNum');
+        
+        // Handle tab switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const role = btn.getAttribute('data-role');
+                if (role === 'data-scientist') {
+                    renderPDF('Resume/Eugene_Fotsing_Data_Scientist_Resume.pdf.pdf', 'dataScienceCanvas', 'dataSciencePageNum');
+                    currentCanvas = 'dataScienceCanvas';
+                } else {
+                    renderPDF('Resume/Eugene_Fotsing_Scrum_Master_Resume.pdf.pdf', 'scrumMasterCanvas', 'scrumMasterPageNum');
+                    currentCanvas = 'scrumMasterCanvas';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Eugene Fotsing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="Home.html">Eugene Fotsing</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="Skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="projects" class="projects">
+        <div class="projects-header" data-aos="fade-up">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">A showcase of my work and contributions</p>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- Loan Prediction Model Project -->
+            <div class="project-card" data-project="loan-prediction">
+                <div class="project-image">
+                    <img src="images/Loan Prediction Model.jpg" alt="Loan Prediction Model">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>FICO Loan Prediction Model</h3>
+                        <span class="project-date-inline">March 2024</span>
+                    </div>
+                    <div class="project-details">
+                        <p>Analyzed key trends and patterns in loan approvals using FICO dataset with 617,996 instances. 
+                        Explored factors including debt-to-income ratio (DTI), loan amount, race, gender, and income. 
+                        Achieved significant insights: 94.3% approval for Female pairs, 92.5% for White applicants, 
+                        and optimal DTI range of 60-80%.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag" data-type="language">Python</span>
+                            <span class="tech-tag" data-type="framework">Jupyter Notebook</span>
+                            <span class="tech-tag" data-type="tool">Data Analysis</span>
+                            <span class="tech-tag" data-type="tool">Statistical Analysis</span>
+                            <span class="tech-tag" data-type="tool">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EugJun/FICO-Loan-Model.git" class="btn btn-sm" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Housing Market Analysis Project -->
+            <div class="project-card" data-project="housing-analysis">
+                <div class="project-image">
+                    <img src="images/HouseTrends.jpg" alt="Housing Market Analysis">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>California Housing Affordability Trends</h3>
+                        <span class="project-date-inline">2017-2022</span>
+                    </div>
+                    <div class="project-details">
+                        <p>Analyzed California housing affordability trends using American Community Survey (ACS) data, comparing 2017 vs 2022. 
+                        Key findings include a 3.5% increase in mortgage burden, with over 65% of households in low-income brackets. 
+                        Study revealed significant affordability gaps across racial groups and proposed a $17 million Housing Support Program (HSP).</p>
+                        <div class="project-tech">
+                            <span class="tech-tag" data-type="language">Python</span>
+                            <span class="tech-tag" data-type="framework">Jupyter Notebook</span>
+                            <span class="tech-tag" data-type="tool">Data Analysis</span>
+                            <span class="tech-tag" data-type="tool">Excel</span>
+                            <span class="tech-tag" data-type="tool">Statistical Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EugJun/House-Affordability-Trends.git" class="btn btn-sm" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simply Pizza Project -->
+            <div class="project-card" data-project="simply-pizza">
+                <div class="project-image">
+                    <img src="images/SimplyPizza.jpg" alt="Simply Pizza POS">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Simply Pizza Ordering System</h3>
+                        <span class="project-date-inline">October 2022</span>
+                    </div>
+                    <div class="project-details">
+                        <p>A Java-based console application that simulates a complete pizza ordering system. 
+                        Features include order management for pizzas and toppings, automatic 10% discount for orders over $50, 
+                        6% sales tax calculation, and detailed receipt generation with payment processing and change calculation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag" data-type="language">Java</span>
+                            <span class="tech-tag" data-type="tool">Console Application</span>
+                            <span class="tech-tag" data-type="tool">OOP</span>
+                            <span class="tech-tag" data-type="tool">Input/Output Operations</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/EugJun/Pizza-order-receipt.git" class="btn btn-sm" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/move.js"></script>
+</body>
+</html> 
